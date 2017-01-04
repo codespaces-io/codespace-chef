@@ -1,0 +1,66 @@
+version: '2'
+
+networks:
+  chef:
+    driver: bridge
+#  ws: 
+#    driver: host
+services:
+  workstation:
+    image: schoolofdevops/chef-controller:v1.0
+    ports:
+      - "8000:8000"
+      - "2222:22"
+    environment:
+      CODEBOX_USERNAME: devops
+      CODEBOX_PASSWORD: codespaces
+    volumes:
+ #     - ./code:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: host
+#    networks:
+#      - chef
+#      - ws
+    container_name: workstation
+    domainname: schoolofdevops.com
+    hostname: workstation
+  chef-node1:
+    image: schoolofdevops/chef-centos6-node:v1.0
+    container_name: chef-node1
+    ports:
+       - "2223:22"
+       - "8080:80"
+    networks:
+      - chef
+    domainname: schoolofdevops.com
+    hostname: chef-node1
+  chef-node2:
+    image: schoolofdevops/chef-centos6-node:v1.0
+    ports:
+       - "2224:22"
+       - "81:80"
+    networks:
+      - chef
+    container_name: chef-node2
+    domainname: schoolofdevops.com
+    hostname: chef-node2
+  chef-node3:
+    image: schoolofdevops/chef-ubuntu14-node:v1.0
+    ports:
+      - "2225:22"
+      - "82:80"
+    networks:
+      - chef
+    container_name: chef-node3
+    domainname: schoolofdevops.com
+    hostname: chef-node3
+  chef-node4:
+    image: schoolofdevops/chef-centos6-node:v1.0
+    ports:
+      - "2226:22"
+      - "3306:3306"
+    networks:
+      - chef
+    container_name: chef-node4
+    domainname: schoolofdevops.com
+    hostname: chef-node4
