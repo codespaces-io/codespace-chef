@@ -1,4 +1,4 @@
-# ansible-setup-docker
+# chef-setup-docker
 Docker compose for running Codebox Web IDE and ansible.
 
 
