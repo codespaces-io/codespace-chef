@@ -152,7 +152,12 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "files/docker-compose.yml",
+      "source": "../docker-compose.yml",
+      "destination": "/tmp/"
+    },
+    {
+      "type": "file",
+      "source": "../docker-compose-build.yml",
       "destination": "/tmp/"
     },
     {
