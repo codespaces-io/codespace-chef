@@ -151,6 +151,11 @@
   ],
   "provisioners": [
     {
+      "type": "file",
+      "source": "../*.yml",
+      "destination": "/tmp/"
+    },
+    {
       "environment_vars": [
         "CLEANUP_PAUSE={{user `cleanup_pause`}}",
         "DESKTOP={{user `desktop`}}",

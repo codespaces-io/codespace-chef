@@ -36,3 +36,8 @@ docker pull ubuntu:16.04
 docker pull schoolofdevops/chef-controller:v1.1
 docker pull schoolofdevops/centos-node:v1.1
 docker pull schoolofdevops/ubuntu-node:v1.1
+
+echo "copying codespace code"
+#copying codespace code
+mkdir -p /codespace
+cp /tmp/*.yml
