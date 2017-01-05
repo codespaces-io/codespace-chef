@@ -40,4 +40,4 @@ docker pull schoolofdevops/ubuntu-node:v1.1
 echo "copying codespace code"
 #copying codespace code
 mkdir -p /codespace
-cp /tmp/*.yml
+cp /tmp/*.yml /codespace/
