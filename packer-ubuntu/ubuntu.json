@@ -153,12 +153,12 @@
     {
       "type": "file",
       "source": "../docker-compose.yml",
-      "destination": "/tmp/"
+      "destination": "/tmp/docker-compose.yml"
     },
     {
       "type": "file",
       "source": "../docker-compose-build.yml",
-      "destination": "/tmp/"
+      "destination": "/tmp/docker-compose-build.yml"
     },
     {
       "environment_vars": [
