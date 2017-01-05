@@ -152,7 +152,7 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "../*.yml",
+      "source": "files/*.yml",
       "destination": "/tmp/"
     },
     {
