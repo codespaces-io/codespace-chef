@@ -6,24 +6,23 @@ networks:
 
 services:
   control:
-    image: schoolofdevops/chef-controller:v1.1
+    build: ./control
+    image: codebox
     ports:
-      - "8000:8000"
+      - "80:8000"
       - "2222:22"
     environment:
-      CODEBOX_USERNAME: devops
-      CODEBOX_PASSWORD: codespaces
+      CODEBOX_USERNAME: admin
+      CODEBOX_PASSWORD: schoolofdevops
     volumes:
-      - /Users/gouravshah/work/initcron/trainings/codespace-chef/code:/workspace
-      - /var/run/docker.sock:/var/run/docker.sock
-#    network_mode: host
+      - ./code:/workspace
     networks:
-      - chef
-    container_name: workstation
+      - custom
+    container_name: control
     domainname: schoolofdevops.com
     hostname: control
   lb:
-    image: schoolofdevops/chef-centos6-node:v1.1
+    build: ./nodes/centos6
     container_name: lb
     ports:
        - "2223:22"
@@ -33,27 +32,27 @@ services:
     domainname: schoolofdevops.com
     hostname: lb
   app1:
-    image: schoolofdevops/chef-centos6-node:v1.1
+    build: ./nodes/centos6
     ports:
        - "2224:22"
-       - "81:80"
+       - "8001:80"
     networks:
       - custom
     container_name: app1
     domainname: schoolofdevops.com
     hostname: app1
   app2:
-    image: schoolofdevops/chef-ubuntu14-node:v1.1
+    build: ./nodes/ubuntu
     ports:
       - "2225:22"
-      - "82:80"
+      - "8002:80"
     networks:
       - custom
     container_name: app2
     domainname: schoolofdevops.com
     hostname: app2
   db:
-    image: schoolofdevops/chef-centos6-node:v1.1
+    build: ./nodes/centos6
     ports:
       - "2226:22"
       - "3306:3306"

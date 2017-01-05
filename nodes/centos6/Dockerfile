@@ -13,7 +13,7 @@ RUN chmod +x /opt/motd.sh && \
     sh /opt/motd.sh && \
     rm -rf /opt/motd.sh
 
-RUN useradd devops && echo 'devops:schoolofdevops' |chpasswd
+RUN useradd devops && echo 'devops:codespaces' |chpasswd
 
 RUN echo 'devops ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 

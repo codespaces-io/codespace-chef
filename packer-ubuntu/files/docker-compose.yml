@@ -8,18 +8,16 @@ services:
   control:
     image: schoolofdevops/chef-controller:v1.1
     ports:
-      - "8000:8000"
+      - "80:8000"
       - "2222:22"
     environment:
-      CODEBOX_USERNAME: devops
-      CODEBOX_PASSWORD: codespaces
+      CODEBOX_USERNAME: admin
+      CODEBOX_PASSWORD: schoolofdevops
     volumes:
-      - /Users/gouravshah/work/initcron/trainings/codespace-chef/code:/workspace
-      - /var/run/docker.sock:/var/run/docker.sock
-#    network_mode: host
+      - ./code:/workspace
     networks:
-      - chef
-    container_name: workstation
+      - custom
+    container_name: control
     domainname: schoolofdevops.com
     hostname: control
   lb:
@@ -43,7 +41,7 @@ services:
     domainname: schoolofdevops.com
     hostname: app1
   app2:
-    image: schoolofdevops/chef-ubuntu14-node:v1.1
+    image: schoolofdevops/chef-ubuntu14-node:1.1
     ports:
       - "2225:22"
       - "82:80"
