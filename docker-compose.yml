@@ -14,7 +14,7 @@ services:
       CODEBOX_USERNAME: devops
       CODEBOX_PASSWORD: codespaces
     volumes:
-      - /Users/gouravshah/work/initcron/trainings/codespace-chef/code:/workspace
+#      - ./code:/workspace
       - /var/run/docker.sock:/var/run/docker.sock
 #    network_mode: host
     networks:
