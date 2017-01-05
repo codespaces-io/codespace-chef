@@ -34,8 +34,8 @@ chmod +x /usr/bin/docker-compose
 echo "Downloading docker images"
 docker pull ubuntu:16.04
 docker pull schoolofdevops/chef-controller:v1.1
-docker pull schoolofdevops/centos-node:v1.1
-docker pull schoolofdevops/ubuntu-node:v1.1
+docker pull schoolofdevops/chef-centos6-node:v1.1
+docker pull schoolofdevops/chef-ubuntu14-node:v1.1
 
 echo "copying codespace code"
 #copying codespace code

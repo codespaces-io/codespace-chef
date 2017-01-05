@@ -8,7 +8,7 @@ services:
   control:
     image: schoolofdevops/chef-controller:v1.1
     ports:
-      - "80:8000"
+      - "8000:8000"
       - "2222:22"
     environment:
       CODEBOX_USERNAME: admin
@@ -41,7 +41,7 @@ services:
     domainname: schoolofdevops.com
     hostname: app1
   app2:
-    image: schoolofdevops/chef-ubuntu14-node:1.1
+    image: schoolofdevops/chef-ubuntu14-node:v1.1
     ports:
       - "2225:22"
       - "82:80"
