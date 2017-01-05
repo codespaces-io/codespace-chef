@@ -1,9 +1,0 @@
----
-# tasks file for mysql
-- include: install.yml
-
-- include: start.yml
-  when: mysql.server
-
-- include: config.yml
-  when: mysql.server

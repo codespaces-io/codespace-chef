@@ -3,8 +3,7 @@ version: '2'
 networks:
   chef:
     driver: bridge
-#  ws: 
-#    driver: host
+
 services:
   workstation:
     image: schoolofdevops/chef-controller:v1.0
@@ -15,12 +14,11 @@ services:
       CODEBOX_USERNAME: devops
       CODEBOX_PASSWORD: codespaces
     volumes:
- #     - ./code:/workspace
+      - /Users/gouravshah/work/initcron/trainings/codespace-chef/code:/workspace
       - /var/run/docker.sock:/var/run/docker.sock
-    network_mode: host
-#    networks:
-#      - chef
-#      - ws
+#    network_mode: host
+    networks:
+      - chef
     container_name: workstation
     domainname: schoolofdevops.com
     hostname: workstation

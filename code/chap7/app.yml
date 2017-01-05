@@ -1,6 +1,0 @@
----
-  - name: Playbook to configure App Servers
-    hosts: app
-    become: true
-    roles:
-    - apache
