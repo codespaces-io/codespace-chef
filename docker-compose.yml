@@ -10,15 +10,16 @@ services:
     ports:
       - "8000:8000"
       - "2222:22"
+      - "80:80"
     environment:
       CODEBOX_USERNAME: devops
       CODEBOX_PASSWORD: codespaces
     volumes:
-#      - ./code:/workspace
+#      - /root/code:/workspace
       - /var/run/docker.sock:/var/run/docker.sock
-#    network_mode: host
-    networks:
-      - chef
+    network_mode: host
+#    networks:
+#      - chef
     container_name: ws
     domainname: schoolofdevops.com
     hostname: ws
@@ -26,7 +27,7 @@ services:
     image: schoolofdevops/chef-centos6-node:v1.1
     ports:
        - "2223:22"
-       - "80:80"
+       - "83:80"
     networks:
       - chef
     container_name: node1
@@ -43,7 +44,7 @@ services:
     domainname: schoolofdevops.com
     hostname: node2
   node3:
-    image: schoolofdevops/chef-ubuntu14-node:v1.1
+    image: schoolofdevops/chef-centos6-node:v1.1
     ports:
       - "2225:22"
       - "82:80"
