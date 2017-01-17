@@ -32,10 +32,10 @@ curl -L "https://github.com/docker/compose/releases/download/1.8.1/docker-compos
 chmod +x /usr/bin/docker-compose
 
 echo "Downloading docker images"
-docker pull ubuntu:16.04
-docker pull schoolofdevops/chef-controller:v1.1
+#docker pull ubuntu:16.04
+docker pull schoolofdevops/chef-controller:v1.2.0
 docker pull schoolofdevops/chef-centos6-node:v1.1
-docker pull schoolofdevops/chef-ubuntu14-node:v1.1
+#docker pull schoolofdevops/chef-ubuntu14-node:v1.1
 
 echo "copying codespace code"
 #copying codespace code
@@ -45,7 +45,7 @@ cp /tmp/*.yml /codespace/
 echo "modifying in rc.local"
 #modifying in rc.local
 cat <<EOF > /etc/rc.local
-#!/bin/sh -e
+#!/bin/bash
 #
 # rc.local
 #
