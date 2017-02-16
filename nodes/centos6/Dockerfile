@@ -13,13 +13,15 @@ RUN chmod +x /opt/motd.sh && \
     sh /opt/motd.sh && \
     rm -rf /opt/motd.sh
 
-RUN useradd devops && echo 'devops:codespaces' |chpasswd
+RUN echo -e "service sshd start && service sshd stop && \
+    useradd devops && \
+    echo 'devops:codespaces' | chpasswd && \
+    /usr/sbin/sshd -D" > /bootstrap.sh
 
 RUN echo 'devops ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-ADD ./entrypoint.sh /entrypoint.sh
-RUN chmod 755 /entrypoint.sh
+COPY authorized_keys /home/devops/.ssh/authorized_keys
 
 EXPOSE 22
 
-CMD ["/bin/bash","/entrypoint.sh"]
+CMD ["/bin/bash","/bootstrap.sh"]
