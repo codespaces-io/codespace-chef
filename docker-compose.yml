@@ -18,6 +18,8 @@ services:
     container_name: ws
     domainname: codespaces.io
     hostname: ws
+    restart: always
+
   node1:
     image: chef-node-centos-6
     ports:
@@ -27,6 +29,8 @@ services:
     container_name: node1
     domainname: codespaces.io
     hostname: node1
+    restart: always
+
   node2:
     image: chef-node-centos-6
     ports:
@@ -36,6 +40,8 @@ services:
     container_name: node2
     domainname: codespaces.io
     hostname: node2
+    restart: always
+
   node3:
     image: chef-node-centos-6
     ports:
@@ -45,6 +51,8 @@ services:
     container_name: node3
     domainname: codespaces.io
     hostname: node3
+    restart: always
+
   node4:
     image: chef-node-centos-6
     ports:
@@ -54,3 +62,4 @@ services:
     container_name: node4
     domainname: codespaces.io
     hostname: node4
+    restart: always
