@@ -37,7 +37,8 @@ RUN chmod +x /opt/motd.sh && \
 RUN useradd -ms /bin/bash devops && \
     echo 'devops:codespaces' |chpasswd && \
     adduser devops sudo && \
-    echo 'devops ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+    echo 'devops ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
+    echo 'StrictHostKeyChecking no' >> /etc/ssh/ssh_config
 
 COPY insecure_key.pem /root/.ssh/id_rsa
 
