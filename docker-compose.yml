@@ -6,60 +6,60 @@ networks:
 
 services:
   ws:
-    image: schoolofdevops/chef-controller:v1.2.0
+    image: chef-ws
     ports:
       - "8000:8000"
-      - "2222:22"
       - "80:80"
-    environment:
-      CODEBOX_USERNAME: devops
-      CODEBOX_PASSWORD: codespaces
     volumes:
-#      - /root/code:/workspace
       - /var/run/docker.sock:/var/run/docker.sock
-    network_mode: host
-#    networks:
-#      - chef
+#    network_mode: host
+    networks:
+      - chef
     container_name: ws
-    domainname: schoolofdevops.com
+    domainname: codespaces.io
     hostname: ws
+    restart: always
+
   node1:
-    image: schoolofdevops/chef-centos6-node:v1.1
+    image: chef-node-centos-6
     ports:
-       - "2223:22"
        - "83:80"
     networks:
       - chef
     container_name: node1
-    domainname: schoolofdevops.com
+    domainname: codespaces.io
     hostname: node1
+    restart: always
+
   node2:
-    image: schoolofdevops/chef-centos6-node:v1.1
+    image: chef-node-centos-6
     ports:
-       - "2224:22"
        - "81:80"
     networks:
       - chef
     container_name: node2
-    domainname: schoolofdevops.com
+    domainname: codespaces.io
     hostname: node2
+    restart: always
+
   node3:
-    image: schoolofdevops/chef-centos6-node:v1.1
+    image: chef-node-centos-6
     ports:
-      - "2225:22"
       - "82:80"
     networks:
       - chef
     container_name: node3
-    domainname: schoolofdevops.com
+    domainname: codespaces.io
     hostname: node3
+    restart: always
+
   node4:
-    image: schoolofdevops/chef-centos6-node:v1.1
+    image: chef-node-centos-6
     ports:
-      - "2226:22"
       - "3306:3306"
     networks:
       - chef
     container_name: node4
-    domainname: schoolofdevops.com
+    domainname: codespaces.io
     hostname: node4
+    restart: always
