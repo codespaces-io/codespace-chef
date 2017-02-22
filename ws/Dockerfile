@@ -1,4 +1,4 @@
-FROM codespaces/base-ubuntu-akurath:v0.1.0
+FROM codespaces/akurath:v0.1.0
 MAINTAINER Vijayboopathy E <vibe@initcron.org>
 
 RUN apt-get install -yq wget  && \ 
@@ -14,6 +14,16 @@ RUN apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 5811
     apt-get update && \
     apt-get install -yq docker-engine
 
+
 EXPOSE 22 8000
+
+COPY insecure_key.pem /root/.ssh/id_rsa
+
+COPY docker-entrypoint.sh /usr/local/bin/
+
+RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
 
 CMD /usr/bin/akurath run
