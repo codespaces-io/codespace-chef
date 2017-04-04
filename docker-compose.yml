@@ -1,21 +1,18 @@
 version: '2'
-
 networks:
   chef:
     driver: bridge
     ipam:
       driver: default
-      config: 
+      config:
         - subnet: 172.0.101.0/24
-
 services:
   ws:
-    image: codespaces/chef-ws:v0.1.4
+    image: 192.168.0.28/codespaces/chef-ws:v0.1.4
     ports:
       - "8000:8000"
-      - "80:80"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ./code:/workspace
     network_mode: host
 #    networks:
 #      - chef
@@ -23,11 +20,11 @@ services:
     domainname: codespaces.io
     hostname: ws
     restart: always
-
   node1:
-    image: codespaces/chef-node-centos-6:v0.1.2
+    image: 192.168.0.28/codespaces/chef-node-centos-6:v0.1.2
     ports:
-       - "83:80"
+       - "81:80"
+       - "8081:8080"
     networks:
       chef:
         ipv4_address: 172.0.101.10
@@ -35,11 +32,11 @@ services:
     domainname: codespaces.io
     hostname: node1
     restart: always
-
   node2:
-    image: codespaces/chef-node-centos-6:v0.1.2
+    image: 192.168.0.28/codespaces/chef-node-centos-6:v0.1.2
     ports:
-       - "81:80"
+       - "8082:8080"
+       - "82:80"
     networks:
       chef:
         ipv4_address: 172.0.101.11
@@ -47,11 +44,11 @@ services:
     domainname: codespaces.io
     hostname: node2
     restart: always
-
   node3:
-    image: codespaces/chef-node-centos-6:v0.1.2
+    image: 192.168.0.28/codespaces/chef-node-centos-6:v0.1.2
     ports:
-      - "82:80"
+      - "8083:8080"
+      - "83:80"
     networks:
       chef:
         ipv4_address: 172.0.101.12
@@ -59,11 +56,12 @@ services:
     domainname: codespaces.io
     hostname: node3
     restart: always
-
   node4:
-    image: codespaces/chef-node-centos-6:v0.1.2
+    image: 192.168.0.28/codespaces/chef-node-centos-6:v0.1.2
     ports:
+      - "8084:8080"
       - "3306:3306"
+      - "80:80"
     networks:
       chef:
         ipv4_address: 172.0.101.13
