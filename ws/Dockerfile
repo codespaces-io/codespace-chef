@@ -21,6 +21,8 @@ COPY insecure_key.pem /root/.ssh/id_rsa
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
+ENV PATH="/opt/chefdk/embedded/bin:${PATH}"
+
 RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
 
 ENTRYPOINT ["docker-entrypoint.sh"]
