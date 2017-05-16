@@ -9,9 +9,11 @@ RUN apt-get install -yq wget  && \
     rm -rf chefdk_1.0.3-1_amd64.deb && \ 
     apt-get purge -yq wget
 
+COPY insecure_key.pem /root/.ssh/id_rsa
+
+COPY docker-entrypoint.sh /usr/local/bin/
 
 ENV PATH="/opt/chefdk/embedded/bin/ruby:${PATH}"
-
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
