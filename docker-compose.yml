@@ -8,11 +8,12 @@ networks:
         - subnet: 172.0.101.0/24
 services:
   ws:
-    image: 192.168.0.28/codespaces/chef-ws:v0.1.4
+    image: codespaces/chef-ws:v0.1.4
     ports:
       - "8000:8000"
     volumes:
       - ./code:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
     network_mode: host
 #    networks:
 #      - chef
@@ -21,7 +22,7 @@ services:
     hostname: ws
     restart: always
   node1:
-    image: 192.168.0.28/codespaces/chef-node-centos-6:v0.1.2
+    image: codespaces/chef-node-centos-6:v0.1.2
     ports:
        - "81:80"
        - "8081:8080"
@@ -33,7 +34,7 @@ services:
     hostname: node1
     restart: always
   node2:
-    image: 192.168.0.28/codespaces/chef-node-centos-6:v0.1.2
+    image: codespaces/chef-node-centos-6:v0.1.2
     ports:
        - "8082:8080"
        - "82:80"
@@ -45,7 +46,7 @@ services:
     hostname: node2
     restart: always
   node3:
-    image: 192.168.0.28/codespaces/chef-node-centos-6:v0.1.2
+    image: codespaces/chef-node-centos-6:v0.1.2
     ports:
       - "8083:8080"
       - "83:80"
@@ -57,7 +58,7 @@ services:
     hostname: node3
     restart: always
   node4:
-    image: 192.168.0.28/codespaces/chef-node-centos-6:v0.1.2
+    image: codespaces/chef-node-centos-6:v0.1.2
     ports:
       - "8084:8080"
       - "3306:3306"
