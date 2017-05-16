@@ -10,11 +10,8 @@ RUN apt-get install -yq wget  && \
     apt-get purge -yq wget
 
 
-EXPOSE 22 8000
-
 ENV PATH="/opt/chefdk/embedded/bin/ruby:${PATH}"
 
-COPY insecure_key.pem /root/.ssh/id_rsa
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
