@@ -8,7 +8,7 @@ networks:
         - subnet: 172.0.101.0/24
 services:
   ws:
-    image: codespaces/chef-ws:v0.1.4
+    image: codespaces/chef-ws:v0.1.6
     ports:
       - "8000:8000"
     volumes:
